@@ -93,13 +93,13 @@ Language support:
    * MRI Ruby is installed through [the Brightbox APT repository](https://launchpad.net/~brightbox/+archive/ruby-ng). We're not using RVM!
    * JRuby is installed from source, but we register an APT entry for it.
    * JRuby uses OpenJDK 8 from [the openjdk-r PPA](https://launchpad.net/~openjdk-r/+archive/ubuntu/ppa).
- * Python 2.7 and Python 3.4.
- * Node.js 0.12, through [NodeSource's APT repository](https://nodesource.com/).
+ * Python 2.7 and Python 3.5.
+ * Node.js 4.4, through [NodeSource's APT repository](https://nodesource.com/).
  * A build system, git, and development headers for many popular libraries, so that the most popular Ruby, Python and Node.js native extensions can be compiled without problems.
 
 Web server and application server:
 
- * Nginx 1.6. Disabled by default.
+ * Nginx 1.10. Disabled by default.
  * [Phusion Passenger 5](https://www.phusionpassenger.com/). Disabled by default (because it starts along with Nginx).
    * This is a fast and lightweight tool for simplifying web application integration into Nginx.
    * It adds many production-grade features, such as process monitoring, administration and status inspection.
@@ -127,11 +127,12 @@ Passenger-docker consists of several images, each one tailor made for a specific
  * `phusion/passenger-ruby20` - Ruby 2.0.
  * `phusion/passenger-ruby21` - Ruby 2.1.
  * `phusion/passenger-ruby22` - Ruby 2.2.
+ * `phusion/passenger-ruby23` - Ruby 2.3.
  * `phusion/passenger-jruby90` - JRuby 9.0.0.0.
 
 **Node.js and Meteor images**
 
- * `phusion/passenger-nodejs` - Node.js 0.11.
+ * `phusion/passenger-nodejs` - Node.js 4.4.
 
 **Other images**
 
@@ -189,6 +190,7 @@ So put the following in your Dockerfile:
     #RUN /pd_build/ruby2.0.sh
     #RUN /pd_build/ruby2.1.sh
     #RUN /pd_build/ruby2.2.sh
+    #RUN /pd_build/ruby2.3.sh
     #RUN /pd_build/jruby9.0.sh
     #   Python support.
     #RUN /pd_build/python.sh
@@ -565,7 +567,7 @@ Here's how it compares to [using `docker exec` to login to the container or to r
 Passenger-docker disables the SSH server by default. Add the following to your Dockerfile to enable it:
 
     RUN rm -f /etc/service/sshd/down
-    
+
     # Regenerate SSH host keys. Passenger-docker does not contain any, so you
     # have to do that yourself. You may also comment out this instruction; the
     # init system will auto-generate one during boot.
@@ -720,6 +722,7 @@ Build one of the images:
     make build_ruby20
     make build_ruby21
     make build_ruby22
+    make build_ruby23
     make build_jruby90
     make build_nodejs
     make build_customizable

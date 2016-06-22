@@ -3,7 +3,7 @@ set -e
 source /pd_build/buildconfig
 set -x
 
-## Brightbox Ruby 1.9.3, 2.0, 2.1 and 2.2
+## Brightbox Ruby 1.9.3, 2.0, 2.1, 2.2 and 2.3
 echo deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu trusty main > /etc/apt/sources.list.d/brightbox.list
 
 ## Phusion Passenger

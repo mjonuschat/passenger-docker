@@ -1,3 +1,13 @@
+## 1.0.0 (release date: unreleased)
+
+ * Upgraded to baseimage-docker 1.0.0 (Ubuntu 16.04).
+ * Upgraded to Phusion Passenger 5.0.29 and Ngnix 1.10.1.
+ * Upgraded to JRuby 9.1.2.0.
+ * Upgraded to Ruby 2.1.8 and 2.2.4.
+ * Upgraded to Node.js 4.4.5.
+ * Upgraded to PostgreSQL 9.5.
+ * Support for Ruby 2.3.1.
+
 ## 0.9.18 (release date: 2015-12-08)
 
  * Upgraded to Phusion Passenger 5.0.22.
