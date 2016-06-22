@@ -6,6 +6,9 @@ set -x
 ## Brightbox Ruby 1.9.3, 2.0, 2.1, 2.2 and 2.3
 echo deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu trusty main > /etc/apt/sources.list.d/brightbox.list
 
+## NGINX Stable Releases
+echo deb http://ppa.launchpad.net/nginx/stable/ubuntu trusty main > /etc/apt/sources.list.d/nginx-stable.list
+
 ## Phusion Passenger
 if [[ "$PASSENGER_ENTERPRISE" ]]; then
 	echo deb https://download:$PASSENGER_ENTERPRISE_DOWNLOAD_TOKEN@www.phusionpassenger.com/enterprise_apt trusty main > /etc/apt/sources.list.d/passenger.list
@@ -29,6 +32,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 	C3173AA6 \
 	561F9B9CAC40B2F7 \
 	5862E31D \
+	C300EE8C \
 	DA1A4A13543B466853BAF164EB9B1D8886F44E2A
 
 ## NodeSource's Node.js repository
