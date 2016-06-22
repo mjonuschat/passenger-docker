@@ -26,7 +26,7 @@ fi
 ## For nokogiri.
 minimal_apt_get_install libxml2-dev libxslt1-dev
 ## For rmagick and minimagick.
-minimal_apt_get_install imagemagick libmagickwand-dev
+minimal_apt_get_install imagemagick libmagickwand-dev graphicsmagick
 ## For mysql and mysql2.
 minimal_apt_get_install libmysqlclient-dev
 ## For sqlite3.
