@@ -1,4 +1,4 @@
-NAME = phusion/passenger
+NAME = yabawock/passenger
 VERSION = 0.9.18
 
 .PHONY: all build_all \
@@ -123,11 +123,11 @@ clean:
 	rm -rf full_image
 
 clean_images:
-	docker rmi phusion/passenger-customizable:latest phusion/passenger-customizable:$(VERSION) || true
-	docker rmi phusion/passenger-ruby19:latest phusion/passenger-ruby19:$(VERSION) || true
-	docker rmi phusion/passenger-ruby20:latest phusion/passenger-ruby20:$(VERSION) || true
-	docker rmi phusion/passenger-ruby21:latest phusion/passenger-ruby21:$(VERSION) || true
-	docker rmi phusion/passenger-ruby22:latest phusion/passenger-ruby22:$(VERSION) || true
-	docker rmi phusion/passenger-jruby90:latest phusion/passenger-jruby90:$(VERSION) || true
-	docker rmi phusion/passenger-nodejs:latest phusion/passenger-nodejs:$(VERSION) || true
-	docker rmi phusion/passenger-full:latest phusion/passenger-full:$(VERSION) || true
+	docker rmi yabawock/passenger-customizable:latest yabawock/passenger-customizable:$(VERSION) || true
+	docker rmi yabawock/passenger-ruby19:latest yabawock/passenger-ruby19:$(VERSION) || true
+	docker rmi yabawock/passenger-ruby20:latest yabawock/passenger-ruby20:$(VERSION) || true
+	docker rmi yabawock/passenger-ruby21:latest yabawock/passenger-ruby21:$(VERSION) || true
+	docker rmi yabawock/passenger-ruby22:latest yabawock/passenger-ruby22:$(VERSION) || true
+	docker rmi yabawock/passenger-jruby90:latest yabawock/passenger-jruby90:$(VERSION) || true
+	docker rmi yabawock/passenger-nodejs:latest yabawock/passenger-nodejs:$(VERSION) || true
+	docker rmi yabawock/passenger-full:latest yabawock/passenger-full:$(VERSION) || true

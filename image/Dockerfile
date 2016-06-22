@@ -1,5 +1,5 @@
 FROM phusion/baseimage:0.9.18
-MAINTAINER Phusion <info@phusion.nl>
+MAINTAINER Morton Jonuschat <m.jonuschat@mojocode.de>
 
 ADD . /pd_build
 RUN /pd_build/install.sh
