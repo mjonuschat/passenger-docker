@@ -4,26 +4,27 @@ source /pd_build/buildconfig
 set -x
 
 ## Brightbox Ruby 1.9.3, 2.0, 2.1, 2.2 and 2.3
+## The trusty repo works for xenial just fine -- https://twitter.com/brightbox/status/735431603594350592
 echo deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu trusty main > /etc/apt/sources.list.d/brightbox.list
 
 ## NGINX Stable Releases
-echo deb http://ppa.launchpad.net/nginx/stable/ubuntu trusty main > /etc/apt/sources.list.d/nginx-stable.list
+echo deb http://ppa.launchpad.net/nginx/stable/ubuntu xenial main > /etc/apt/sources.list.d/nginx-stable.list
 
 ## PostgreSQL Global Development Group (PGDG)repository
-echo deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main > /etc/apt/sources.list.d/pgdg.list
+echo deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main > /etc/apt/sources.list.d/pgdg.list
 
 ## Phusion Passenger
 if [[ "$PASSENGER_ENTERPRISE" ]]; then
-	echo deb https://download:$PASSENGER_ENTERPRISE_DOWNLOAD_TOKEN@www.phusionpassenger.com/enterprise_apt trusty main > /etc/apt/sources.list.d/passenger.list
+	echo deb https://download:$PASSENGER_ENTERPRISE_DOWNLOAD_TOKEN@www.phusionpassenger.com/enterprise_apt xenial main > /etc/apt/sources.list.d/passenger.list
 else
-	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main > /etc/apt/sources.list.d/passenger.list
+	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main > /etc/apt/sources.list.d/passenger.list
 fi
 
 ## Rowan's Redis PPA
-echo deb http://ppa.launchpad.net/chris-lea/redis-server/ubuntu trusty main > /etc/apt/sources.list.d/redis.list
+echo deb http://ppa.launchpad.net/chris-lea/redis-server/ubuntu xenial main > /etc/apt/sources.list.d/redis.list
 
 ## OpenJDK 8 PPA
-echo deb http://ppa.launchpad.net/openjdk-r/ppa/ubuntu trusty main > /etc/apt/sources.list.d/openjdk8.list
+echo deb http://ppa.launchpad.net/openjdk-r/ppa/ubuntu xenial main > /etc/apt/sources.list.d/openjdk8.list
 
 # The recv-keys part takes a bit of time, so it's faster to receive multiple keys at once.
 #

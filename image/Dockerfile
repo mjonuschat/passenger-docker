@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.18
+FROM yabawock/baseimage:1.0.0
 MAINTAINER Morton Jonuschat <m.jonuschat@mojocode.de>
 
 ADD . /pd_build
