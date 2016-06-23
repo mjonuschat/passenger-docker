@@ -3,17 +3,14 @@ set -e
 source /pd_build/buildconfig
 set -x
 
-JRUBY_VERSION=9.0.4.0
-JRUBY_MAJOR_MINOR=9.0
+JRUBY_VERSION=9.1.2.0
+JRUBY_MAJOR_MINOR=9.1
 
 minimal_apt_get_install openjdk-8-jre-headless
 dpkg-reconfigure ca-certificates-java
 
-# Original URL:
-# https://s3.amazonaws.com/jruby.org/downloads/$JRUBY_VERSION/jruby-bin-$JRUBY_VERSION.tar.gz
-# We use a mirror at oss-binaries.phusionpassenger.com because it's faster from the Netherlands.
 curl --fail -L \
-	https://oss-binaries.phusionpassenger.com/jruby/jruby-bin-$JRUBY_VERSION.tar.gz \
+	https://s3.amazonaws.com/jruby.org/downloads/$JRUBY_VERSION/jruby-bin-$JRUBY_VERSION.tar.gz \
 	-o /tmp/jruby-bin-$JRUBY_VERSION.tar.gz
 cd /usr/local
 tar xzf /tmp/jruby-bin-$JRUBY_VERSION.tar.gz
@@ -37,7 +34,7 @@ Source: jruby-fake
 Section: ruby
 Priority: optional
 Maintainer: Unmaintained <noreply@debian.org>
-Build-Depends: debhelper (>= 9~), openjdk-7-jdk (>= 7u71-2.5.3), ant-optional,
+Build-Depends: debhelper (>= 9~), openjdk-8-jdk (>= 8u77-b03), ant-optional,
  libasm3-java, libcommons-logging-java, libjarjar-java, libjoda-time-java,
  junit4, libbsf-java, libjline-java, bnd, libconstantine-java,
  netbase, libjgrapht0.8-java, libjcodings-java, libbytelist-java, libjffi-java,
@@ -50,7 +47,7 @@ Version: $JRUBY_VERSION
 Architecture: all
 Replaces: jruby1.0, jruby1.1, jruby1.2
 Provides: ruby-interpreter, rubygems1.9
-Depends: default-jre | java6-runtime | java-runtime-headless
+Depends: default-jre | java6-runtime | java-runtime-headless | java8-runtime-headless
 Recommends: ri
 Description: 100% pure-Java implementation of Ruby (fake package)
  JRuby is a 100% pure-Java implementation of the Ruby programming language.

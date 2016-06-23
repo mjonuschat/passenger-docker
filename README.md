@@ -88,8 +88,8 @@ Basics (learn more at [baseimage-docker](http://phusion.github.io/baseimage-dock
 
 Language support:
 
- * Ruby 1.9.3, 2.0.0, 2.1.6, and 2.2.2; JRuby 9.0.0.0.
-   * 2.2.2 is configured as the default.
+ * Ruby 1.9.3, 2.0.0, 2.1.8, 2.2.4 and 2.3.1; JRuby 9.1.2.0.
+   * 2.3.1 is configured as the default.
    * MRI Ruby is installed through [the Brightbox APT repository](https://launchpad.net/~brightbox/+archive/ruby-ng). We're not using RVM!
    * JRuby is installed from source, but we register an APT entry for it.
    * JRuby uses OpenJDK 8 from [the openjdk-r PPA](https://launchpad.net/~openjdk-r/+archive/ubuntu/ppa).
@@ -128,7 +128,7 @@ Passenger-docker consists of several images, each one tailor made for a specific
  * `phusion/passenger-ruby21` - Ruby 2.1.
  * `phusion/passenger-ruby22` - Ruby 2.2.
  * `phusion/passenger-ruby23` - Ruby 2.3.
- * `phusion/passenger-jruby90` - JRuby 9.0.0.0.
+ * `phusion/passenger-jruby91` - JRuby 9.1.2.0.
 
 **Node.js and Meteor images**
 
@@ -170,7 +170,7 @@ So put the following in your Dockerfile:
     #FROM phusion/passenger-ruby20:<VERSION>
     #FROM phusion/passenger-ruby21:<VERSION>
     #FROM phusion/passenger-ruby22:<VERSION>
-    #FROM phusion/passenger-jruby90:<VERSION>
+    #FROM phusion/passenger-jruby91:<VERSION>
     #FROM phusion/passenger-nodejs:<VERSION>
     #FROM phusion/passenger-customizable:<VERSION>
 
@@ -191,7 +191,7 @@ So put the following in your Dockerfile:
     #RUN /pd_build/ruby2.1.sh
     #RUN /pd_build/ruby2.2.sh
     #RUN /pd_build/ruby2.3.sh
-    #RUN /pd_build/jruby9.0.sh
+    #RUN /pd_build/jruby9.1.sh
     #   Python support.
     #RUN /pd_build/python.sh
     #   Node.js and Meteor support.
@@ -723,7 +723,7 @@ Build one of the images:
     make build_ruby21
     make build_ruby22
     make build_ruby23
-    make build_jruby90
+    make build_jruby91
     make build_nodejs
     make build_customizable
     make build_full
