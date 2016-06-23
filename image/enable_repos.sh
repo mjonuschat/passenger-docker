@@ -20,7 +20,7 @@ else
 fi
 
 ## Rowan's Redis PPA
-echo deb http://ppa.launchpad.net/rwky/redis/ubuntu trusty main > /etc/apt/sources.list.d/redis.list
+echo deb http://ppa.launchpad.net/chris-lea/redis-server/ubuntu trusty main > /etc/apt/sources.list.d/redis.list
 
 ## OpenJDK 8 PPA
 echo deb http://ppa.launchpad.net/openjdk-r/ppa/ubuntu trusty main > /etc/apt/sources.list.d/openjdk8.list
@@ -34,7 +34,7 @@ echo deb http://ppa.launchpad.net/openjdk-r/ppa/ubuntu trusty main > /etc/apt/so
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 	C3173AA6 \
 	561F9B9CAC40B2F7 \
-	5862E31D \
+	C7917B12 \
 	C300EE8C \
 	ACCC4CF8 \
 	DA1A4A13543B466853BAF164EB9B1D8886F44E2A

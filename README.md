@@ -108,7 +108,7 @@ Web server and application server:
 
 Auxiliary services and tools:
 
- * Redis 2.6, through [Rowan's Redis PPA](https://launchpad.net/~rwky/+archive/redis). Disabled by default.
+ * Redis 3.0, through [Chris Lea's Redis PPA](https://launchpad.net/~chris-lea/+archive/redis-server). Disabled by default.
  * Memcached. Disabled by default.
 
 <a name="memory_efficiency"></a>
