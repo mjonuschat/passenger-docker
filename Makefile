@@ -3,8 +3,8 @@ VERSION = 1.0.0
 
 .PHONY: all build_all \
 	build_customizable \
-	build_ruby19 build_ruby20 build_ruby21 build_ruby22 build_jruby91 \
-	build_nodejs build_full \
+	build_ruby19 build_ruby20 build_ruby21 build_ruby22 build_ruby23 \
+	build_jruby91 build_nodejs build_full \
 	tag_latest release clean clean_images
 
 all: build_all
