@@ -122,7 +122,7 @@ release: tag_latest
 	docker push $(NAME)-jruby91
 	docker push $(NAME)-nodejs
 	docker push $(NAME)-full
-	@echo "*** Don't forget to create a tag. git tag rel-$(VERSION) && git push origin rel-$(VERSION)"
+	@echo "*** Don't forget to create a tag. git tag v$(VERSION) && git push origin v$(VERSION)"
 
 clean:
 	rm -rf customizable_image
