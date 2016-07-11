@@ -2,6 +2,7 @@
 
  * Upgraded to baseimage-docker 2.0.0 (Ubuntu 18.04).
  * Upgraded to use RVM to install ruby versions
+ * Man pages, documentation and non-English locales are now removed. This shaves around 64 MB.
 
 ## 1.0.0 (release date: unreleased)
 
