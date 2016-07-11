@@ -1,10 +1,8 @@
 #!/bin/bash
 set -e
 source /pd_build/buildconfig
-set -x
 
-## Brightbox Ruby 1.9.3, 2.0, 2.1, 2.2, 2.3 and 2.4
-echo deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu xenial main > /etc/apt/sources.list.d/brightbox.list
+header "Preparing APT repositories"
 
 ## NGINX Stable Releases
 echo deb http://ppa.launchpad.net/nginx/stable/ubuntu xenial main > /etc/apt/sources.list.d/nginx-stable.list
@@ -13,11 +11,7 @@ echo deb http://ppa.launchpad.net/nginx/stable/ubuntu xenial main > /etc/apt/sou
 echo deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main > /etc/apt/sources.list.d/pgdg.list
 
 ## Phusion Passenger
-if [[ "$PASSENGER_ENTERPRISE" ]]; then
-	echo deb https://download:$PASSENGER_ENTERPRISE_DOWNLOAD_TOKEN@www.phusionpassenger.com/enterprise_apt xenial main > /etc/apt/sources.list.d/passenger.list
-else
-	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main > /etc/apt/sources.list.d/passenger.list
-fi
+echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main > /etc/apt/sources.list.d/passenger.list
 
 ## Rowan's Redis PPA
 echo deb http://ppa.launchpad.net/chris-lea/redis-server/ubuntu xenial main > /etc/apt/sources.list.d/redis.list
@@ -38,6 +32,9 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 	C300EE8C \
 	ACCC4CF8 \
 	DA1A4A13543B466853BAF164EB9B1D8886F44E2A
+
+## Update package information
+run apt-get update
 
 ## NodeSource's Node.js repository
 curl --fail -sL https://deb.nodesource.com/setup_6.x | bash -

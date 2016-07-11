@@ -1,5 +1,10 @@
 ## 1.0.0 (release date: unreleased)
 
+ * Upgraded to baseimage-docker 2.0.0 (Ubuntu 18.04).
+ * Upgraded to use RVM to install ruby versions
+
+## 1.0.0 (release date: unreleased)
+
  * Upgraded to baseimage-docker 1.0.0 (Ubuntu 16.04).
  * Upgraded to Phusion Passenger 5.0.29 and Ngnix 1.10.1.
  * Upgraded to JRuby 9.1.2.0.

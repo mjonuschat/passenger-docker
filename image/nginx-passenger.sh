@@ -4,6 +4,15 @@ source /pd_build/buildconfig
 source /etc/environment
 set -x
 
+## Phusion Passenger requires Ruby. Install it through RVM, not APT,
+## so that the -customizable variant cannot end up having Ruby installed
+## from APT and Ruby installed from RVM.
+/pd_build/ruby_support/prepare.sh
+/usr/local/rvm/bin/rvm install ruby-2.3.1
+# Make passenger_system_ruby work.
+create_rvm_wrapper_script ruby2.3 ruby-2.3.1 ruby
+/pd_build/ruby_support/finalize.sh
+
 ## Install Phusion Passenger.
 if [[ "$PASSENGER_ENTERPRISE" ]]; then
 	apt-get install -y nginx-extras passenger-enterprise
@@ -47,11 +56,7 @@ if [[ -e /usr/bin/ruby2.0 ]]; then
 	ruby2.0 -S passenger-config build-native-support
 	setuser app ruby2.0 -S passenger-config build-native-support
 fi
-if [[ -e /usr/bin/ruby1.9.1 ]]; then
-	ruby1.9.1 -S passenger-config build-native-support
-	setuser app ruby1.9.1 -S passenger-config build-native-support
-fi
-if [[ -e /usr/local/jruby-1.9.8.0/bin/jruby ]]; then
+if [[ -e /usr/bin/jruby ]]; then
   jruby -S passenger-config build-native-support
   setuser app jruby -S passenger-config build-native-support
 fi
