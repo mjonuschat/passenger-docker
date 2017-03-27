@@ -132,6 +132,8 @@ Passenger-docker consists of several images, each one tailor made for a specific
  * `phusion/passenger-ruby21` - Ruby 2.1.
  * `phusion/passenger-ruby22` - Ruby 2.2.
  * `phusion/passenger-ruby23` - Ruby 2.3.
+ * `phusion/passenger-ruby24` - Ruby 2.4.
+ * `phusion/passenger-ruby25` - Ruby 2.5.
  * `phusion/passenger-jruby91` - JRuby 9.1.2.0.
 
 **Node.js and Meteor images**
@@ -173,6 +175,9 @@ So put the following in your Dockerfile:
     #FROM phusion/passenger-ruby20:<VERSION>
     #FROM phusion/passenger-ruby21:<VERSION>
     #FROM phusion/passenger-ruby22:<VERSION>
+    #FROM phusion/passenger-ruby23:<VERSION>
+    #FROM phusion/passenger-ruby24:<VERSION>
+    #FROM phusion/passenger-ruby25:<VERSION>
     #FROM phusion/passenger-jruby91:<VERSION>
     #FROM phusion/passenger-nodejs:<VERSION>
     #FROM phusion/passenger-customizable:<VERSION>
@@ -193,6 +198,8 @@ So put the following in your Dockerfile:
     #RUN /pd_build/ruby-2.1.*.sh
     #RUN /pd_build/ruby-2.2.*.sh
     #RUN /pd_build/ruby-2.3.*.sh
+    #RUN /pd_build/ruby-2.4.*.sh
+    #RUN /pd_build/ruby-2.5.*.sh
     #RUN /pd_build/jruby-9.1.*.sh
     #   Python support.
     #RUN /pd_build/python.sh
@@ -243,11 +250,17 @@ You can add a virtual host entry (`server` block) by placing a .conf file in the
         passenger_user app;
 
         # If this is a Ruby app, specify a Ruby version:
+        passenger_ruby /usr/bin/ruby2.5;
+        # For Ruby 2.4
+        passenger_ruby /usr/bin/ruby2.4;
+        # For Ruby 2.3
+        passenger_ruby /usr/bin/ruby2.3;
+        # For Ruby 2.2
+        passenger_ruby /usr/bin/ruby2.2;
+        # For Ruby 2.1
         passenger_ruby /usr/bin/ruby2.1;
         # For Ruby 2.0
         passenger_ruby /usr/bin/ruby2.0;
-        # For Ruby 1.9.3 (you can ignore the "1.9.1" suffix)
-        #passenger_ruby /usr/bin/ruby1.9.1;
     }
 
     # Dockerfile:
