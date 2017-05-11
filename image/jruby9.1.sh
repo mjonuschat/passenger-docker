@@ -3,7 +3,7 @@ set -e
 source /pd_build/buildconfig
 set -x
 
-JRUBY_VERSION=9.1.2.0
+JRUBY_VERSION=9.1.8.0
 JRUBY_MAJOR_MINOR=9.1
 
 minimal_apt_get_install openjdk-8-jre-headless

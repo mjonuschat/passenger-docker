@@ -88,13 +88,13 @@ Basics (learn more at [baseimage-docker](http://phusion.github.io/baseimage-dock
 
 Language support:
 
- * Ruby 1.9.3, 2.0.0, 2.1.8, 2.2.4 and 2.3.1; JRuby 9.1.2.0.
-   * 2.3.1 is configured as the default.
+ * Ruby 1.9.3, 2.0.0, 2.1.9, 2.2.7, 2.3.4 and 2.4.1; JRuby 9.1.8.0.
+   * 2.4.1 is configured as the default.
    * MRI Ruby is installed through [the Brightbox APT repository](https://launchpad.net/~brightbox/+archive/ruby-ng). We're not using RVM!
    * JRuby is installed from source, but we register an APT entry for it.
    * JRuby uses OpenJDK 8 from [the openjdk-r PPA](https://launchpad.net/~openjdk-r/+archive/ubuntu/ppa).
  * Python 2.7 and Python 3.5.
- * Node.js 4.4, through [NodeSource's APT repository](https://nodesource.com/).
+ * Node.js 6.x LTS, through [NodeSource's APT repository](https://nodesource.com/).
  * A build system, git, and development headers for many popular libraries, so that the most popular Ruby, Python and Node.js native extensions can be compiled without problems.
 
 Web server and application server:

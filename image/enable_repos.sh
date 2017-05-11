@@ -3,9 +3,8 @@ set -e
 source /pd_build/buildconfig
 set -x
 
-## Brightbox Ruby 1.9.3, 2.0, 2.1, 2.2 and 2.3
-## The trusty repo works for xenial just fine -- https://twitter.com/brightbox/status/735431603594350592
-echo deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu trusty main > /etc/apt/sources.list.d/brightbox.list
+## Brightbox Ruby 1.9.3, 2.0, 2.1, 2.2, 2.3 and 2.4
+echo deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu xenial main > /etc/apt/sources.list.d/brightbox.list
 
 ## NGINX Stable Releases
 echo deb http://ppa.launchpad.net/nginx/stable/ubuntu xenial main > /etc/apt/sources.list.d/nginx-stable.list
@@ -41,4 +40,4 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 	DA1A4A13543B466853BAF164EB9B1D8886F44E2A
 
 ## NodeSource's Node.js repository
-curl --fail -sL https://deb.nodesource.com/setup_4.x | bash -
+curl --fail -sL https://deb.nodesource.com/setup_6.x | bash -

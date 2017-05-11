@@ -1,9 +1,9 @@
 NAME = yabawock/passenger
-VERSION = 1.0.0
+VERSION = 1.1.0
 
 .PHONY: all build_all \
 	build_customizable \
-	build_ruby19 build_ruby20 build_ruby21 build_ruby22 build_ruby23 \
+	build_ruby19 build_ruby20 build_ruby21 build_ruby22 build_ruby23 build_ruby24 \
 	build_jruby91 build_nodejs build_full \
 	tag_latest release clean clean_images
 
@@ -16,6 +16,7 @@ build_all: \
 	build_ruby21 \
 	build_ruby22 \
 	build_ruby23 \
+	build_ruby24 \
 	build_jruby91 \
 	build_nodejs \
 	build_full
@@ -62,6 +63,13 @@ build_ruby23:
 	echo final=1 >> ruby23_image/buildconfig
 	docker build -t $(NAME)-ruby23:$(VERSION) --rm ruby23_image
 
+build_ruby24:
+	rm -rf ruby24_image
+	cp -pR image ruby24_image
+	echo ruby24=1 >> ruby24_image/buildconfig
+	echo final=1 >> ruby24_image/buildconfig
+	docker build -t $(NAME)-ruby24:$(VERSION) --rm ruby24_image
+
 build_jruby91:
 	rm -rf jruby91_image
 	cp -pR image jruby91_image
@@ -84,6 +92,7 @@ build_full:
 	echo ruby21=1 >> full_image/buildconfig
 	echo ruby22=1 >> full_image/buildconfig
 	echo ruby23=1 >> full_image/buildconfig
+	echo ruby24=1 >> full_image/buildconfig
 	echo jruby91=1 >> full_image/buildconfig
 	echo python=1 >> full_image/buildconfig
 	echo nodejs=1 >> full_image/buildconfig
@@ -99,6 +108,7 @@ tag_latest:
 	docker tag $(NAME)-ruby21:$(VERSION) $(NAME)-ruby21:latest
 	docker tag $(NAME)-ruby22:$(VERSION) $(NAME)-ruby22:latest
 	docker tag $(NAME)-ruby23:$(VERSION) $(NAME)-ruby23:latest
+	docker tag $(NAME)-ruby24:$(VERSION) $(NAME)-ruby24:latest
 	docker tag $(NAME)-jruby91:$(VERSION) $(NAME)-jruby91:latest
 	docker tag $(NAME)-nodejs:$(VERSION) $(NAME)-nodejs:latest
 	docker tag $(NAME)-full:$(VERSION) $(NAME)-full:latest
@@ -110,6 +120,7 @@ release: tag_latest
 	@if ! docker images $(NAME)-ruby21 | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-ruby21 version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	@if ! docker images $(NAME)-ruby22 | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-ruby22 version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	@if ! docker images $(NAME)-ruby23 | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-ruby23 version $(VERSION) is not yet built. Please run 'make build'"; false; fi
+	@if ! docker images $(NAME)-ruby24 | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-ruby24 version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	@if ! docker images $(NAME)-jruby91 | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-jruby91 version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	@if ! docker images $(NAME)-nodejs | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-nodejs version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	@if ! docker images $(NAME)-full | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-full version $(VERSION) is not yet built. Please run 'make build'"; false; fi
@@ -119,6 +130,7 @@ release: tag_latest
 	docker push $(NAME)-ruby21
 	docker push $(NAME)-ruby22
 	docker push $(NAME)-ruby23
+	docker push $(NAME)-ruby24
 	docker push $(NAME)-jruby91
 	docker push $(NAME)-nodejs
 	docker push $(NAME)-full
@@ -131,6 +143,7 @@ clean:
 	rm -rf ruby21_image
 	rm -rf ruby22_image
 	rm -rf ruby23_image
+	rm -rf ruby24_image
 	rm -rf jruby91_image
 	rm -rf nodejs_image
 	rm -rf full_image
@@ -142,6 +155,7 @@ clean_images:
 	docker rmi yabawock/passenger-ruby21:latest yabawock/passenger-ruby21:$(VERSION) || true
 	docker rmi yabawock/passenger-ruby22:latest yabawock/passenger-ruby22:$(VERSION) || true
 	docker rmi yabawock/passenger-ruby23:latest yabawock/passenger-ruby23:$(VERSION) || true
+	docker rmi yabawock/passenger-ruby24:latest yabawock/passenger-ruby24:$(VERSION) || true
 	docker rmi yabawock/passenger-jruby91:latest yabawock/passenger-jruby91:$(VERSION) || true
 	docker rmi yabawock/passenger-nodejs:latest yabawock/passenger-nodejs:$(VERSION) || true
 	docker rmi yabawock/passenger-full:latest yabawock/passenger-full:$(VERSION) || true
