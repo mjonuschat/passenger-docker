@@ -189,9 +189,15 @@ So put the following in your Dockerfile:
     CMD ["/sbin/my_init"]
 
     # If you're using the 'customizable' variant, you need to explicitly opt-in
-    # for features. Uncomment the features you want:
+    # for features.
     #
-    #   Ruby support (packaged with Node support as well).
+    # N.B. these images are based on https://github.com/yabawock/baseimage-docker,
+    # so anything it provides is also automatically on board in the images below
+    # (e.g. older versions of Ruby, Node, Python).
+    #
+    # Uncomment the features you want:
+    #
+    #   Ruby support
     #RUN /pd_build/ruby-2.0.*.sh
     #RUN /pd_build/ruby-2.1.*.sh
     #RUN /pd_build/ruby-2.2.*.sh
@@ -216,6 +222,8 @@ So put the following in your Dockerfile:
 The image has an `app` user with UID 9999 and home directory `/home/app`. Your application is supposed to run as this user. Even though Docker itself provides some isolation from the host OS, running applications without root privileges is good security practice.
 
 Your application should be placed inside /home/app.
+
+Note: when copying your application, make sure to set the ownership of the application directory to `app` by calling `COPY --chown=app:app /local/path/of/your/app /home/app/webapp`
 
 <a name="nginx_passenger"></a>
 ### Using Nginx and Passenger
@@ -267,6 +275,7 @@ You can add a virtual host entry (`server` block) by placing a .conf file in the
     ADD webapp.conf /etc/nginx/sites-enabled/webapp.conf
     RUN mkdir /home/app/webapp
     RUN ...commands to place your web app in /home/app/webapp...
+    # COPY --chown=app:app /local/path/of/your/app /home/app/webapp # This copies your web app with the correct ownership.
 
 <a name="configuring_nginx"></a>
 #### Configuring Nginx

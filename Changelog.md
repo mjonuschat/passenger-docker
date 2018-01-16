@@ -1,11 +1,20 @@
-## 1.0.0 (release date: unreleased)
+## 2.0.0 (release date: unreleased)
 
  * Upgraded to baseimage-docker 2.0.0 (Ubuntu 18.04).
  * Upgraded to use RVM to install ruby versions
- * Man pages, documentation and non-English locales are now removed. This shaves around 64 MB.
- * Gzip support in Nginx is now correctly enabled by default. Closes GH-115.
+ * Removed Ruby 1.9.3 support
+ * Support for Ruby 2.5
+ * Upgraded to Ruby 2.0.0, 2.1.10, 2.2.10 and 2.3.8 and 2.4.5
+ * Upgraded to JRuby 9.1.17.0.
 
-## 1.0.0 (release date: unreleased)
+## 1.1.0 (release date: 2017-05-10)
+
+ * Upgraded to JRuby 9.1.8.0.
+ * Upgraded to Ruby 1.9.3, 2.0.0, 2.1.9, 2.2.7 and 2.3.4.
+ * Upgraded to Node.js 6.x LTS.
+ * Support for Ruby 2.4.1.
+
+## 1.0.0 (release date: 2016-06-25)
 
  * Upgraded to baseimage-docker 1.0.0 (Ubuntu 16.04).
  * Upgraded to Phusion Passenger 5.0.29 and Ngnix 1.10.1.
