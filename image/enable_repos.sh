@@ -4,9 +4,6 @@ source /pd_build/buildconfig
 
 header "Preparing APT repositories"
 
-## NGINX Stable Releases
-echo deb http://ppa.launchpad.net/nginx/stable/ubuntu xenial main > /etc/apt/sources.list.d/nginx-stable.list
-
 ## PostgreSQL Global Development Group (PGDG)repository
 echo deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main > /etc/apt/sources.list.d/pgdg.list
 

@@ -18,9 +18,9 @@ fi
 
 ## Install Phusion Passenger.
 if [[ "$PASSENGER_ENTERPRISE" ]]; then
-	run apt-get install -y nginx-extras passenger-enterprise
+	run apt-get install -y nginx-extras libnginx-mod-http-passenger-enterprise
 else
-	run apt-get install -y nginx-extras passenger
+	run apt-get install -y nginx-extras libnginx-mod-http-passenger
 fi
 run cp /pd_build/config/30_presetup_nginx.sh /etc/my_init.d/
 run cp /pd_build/config/nginx.conf /etc/nginx/nginx.conf
