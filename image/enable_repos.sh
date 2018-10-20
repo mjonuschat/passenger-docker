@@ -5,16 +5,16 @@ source /pd_build/buildconfig
 header "Preparing APT repositories"
 
 ## PostgreSQL Global Development Group (PGDG)repository
-echo deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main > /etc/apt/sources.list.d/pgdg.list
+echo deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main > /etc/apt/sources.list.d/pgdg.list
 
 ## Phusion Passenger
-echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main > /etc/apt/sources.list.d/passenger.list
+echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main > /etc/apt/sources.list.d/passenger.list
 
 ## Rowan's Redis PPA
-echo deb http://ppa.launchpad.net/chris-lea/redis-server/ubuntu xenial main > /etc/apt/sources.list.d/redis.list
+echo deb http://ppa.launchpad.net/chris-lea/redis-server/ubuntu bionic main > /etc/apt/sources.list.d/redis.list
 
 ## OpenJDK 8 PPA
-echo deb http://ppa.launchpad.net/openjdk-r/ppa/ubuntu xenial main > /etc/apt/sources.list.d/openjdk8.list
+echo deb http://ppa.launchpad.net/openjdk-r/ppa/ubuntu bionic main > /etc/apt/sources.list.d/openjdk8.list
 
 # The recv-keys part takes a bit of time, so it's faster to receive multiple keys at once.
 #
@@ -34,4 +34,4 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
 run apt-get update
 
 ## NodeSource's Node.js repository
-curl --fail -sL https://deb.nodesource.com/setup_6.x | bash -
+curl --fail -sL https://deb.nodesource.com/setup_8.x | bash -

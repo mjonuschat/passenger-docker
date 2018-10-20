@@ -8,5 +8,5 @@ minimal_apt_get_install nodejs
 
 run npm update npm -g
 if [[ ! -e /usr/bin/node ]]; then
-  ln -s /usr/bin/nodejs /usr/bin/node
+  run ln -s /usr/bin/nodejs /usr/bin/node
 fi

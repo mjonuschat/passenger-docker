@@ -5,6 +5,8 @@ source /pd_build/buildconfig
 ## The Rails asset compiler requires a Javascript runtime.
 if [[ ! -e /usr/bin/node ]]; then
 	run minimal_apt_get_install nodejs
+fi
+if [[ ! -e /usr/bin/node ]]; then
 	run ln -s /usr/bin/nodejs /usr/bin/node
 fi
 
