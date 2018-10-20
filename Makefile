@@ -3,7 +3,7 @@ VERSION = 1.1.0
 
 .PHONY: all build_all \
 	build_customizable \
-	build_ruby19 build_ruby20 build_ruby21 build_ruby22 build_ruby23 build_ruby24 \
+	build_ruby20 build_ruby21 build_ruby22 build_ruby23 build_ruby24 \
 	build_jruby91 build_nodejs build_full \
 	tag_latest release clean clean_images
 
@@ -11,7 +11,6 @@ all: build_all
 
 build_all: \
 	build_customizable \
-	build_ruby19 \
 	build_ruby20 \
 	build_ruby21 \
 	build_ruby22 \
@@ -27,13 +26,6 @@ build_customizable:
 	rm -rf customizable_image
 	cp -pR image customizable_image
 	docker build -t $(NAME)-customizable:$(VERSION) --rm customizable_image
-
-build_ruby19:
-	rm -rf ruby19_image
-	cp -pR image ruby19_image
-	echo ruby19=1 >> ruby19_image/buildconfig
-	echo final=1 >> ruby19_image/buildconfig
-	docker build -t $(NAME)-ruby19:$(VERSION) --rm ruby19_image
 
 build_ruby20:
 	rm -rf ruby20_image
@@ -87,7 +79,6 @@ build_nodejs:
 build_full:
 	rm -rf full_image
 	cp -pR image full_image
-	echo ruby19=1 >> full_image/buildconfig
 	echo ruby20=1 >> full_image/buildconfig
 	echo ruby21=1 >> full_image/buildconfig
 	echo ruby22=1 >> full_image/buildconfig
@@ -103,7 +94,6 @@ build_full:
 
 tag_latest:
 	docker tag $(NAME)-customizable:$(VERSION) $(NAME)-customizable:latest
-	docker tag $(NAME)-ruby19:$(VERSION) $(NAME)-ruby19:latest
 	docker tag $(NAME)-ruby20:$(VERSION) $(NAME)-ruby20:latest
 	docker tag $(NAME)-ruby21:$(VERSION) $(NAME)-ruby21:latest
 	docker tag $(NAME)-ruby22:$(VERSION) $(NAME)-ruby22:latest
@@ -115,7 +105,6 @@ tag_latest:
 
 release: tag_latest
 	@if ! docker images $(NAME)-customizable | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-customizable version $(VERSION) is not yet built. Please run 'make build'"; false; fi
-	@if ! docker images $(NAME)-ruby19 | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-ruby19 version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	@if ! docker images $(NAME)-ruby20 | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-ruby20 version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	@if ! docker images $(NAME)-ruby21 | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-ruby21 version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	@if ! docker images $(NAME)-ruby22 | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-ruby22 version $(VERSION) is not yet built. Please run 'make build'"; false; fi
@@ -124,8 +113,8 @@ release: tag_latest
 	@if ! docker images $(NAME)-jruby91 | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-jruby91 version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	@if ! docker images $(NAME)-nodejs | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-nodejs version $(VERSION) is not yet built. Please run 'make build'"; false; fi
 	@if ! docker images $(NAME)-full | awk '{ print $$2 }' | grep -q -F $(VERSION); then echo "$(NAME)-full version $(VERSION) is not yet built. Please run 'make build'"; false; fi
+
 	docker push $(NAME)-customizable
-	docker push $(NAME)-ruby19
 	docker push $(NAME)-ruby20
 	docker push $(NAME)-ruby21
 	docker push $(NAME)-ruby22
@@ -138,7 +127,6 @@ release: tag_latest
 
 clean:
 	rm -rf customizable_image
-	rm -rf ruby19_image
 	rm -rf ruby20_image
 	rm -rf ruby21_image
 	rm -rf ruby22_image
@@ -150,7 +138,6 @@ clean:
 
 clean_images:
 	docker rmi yabawock/passenger-customizable:latest yabawock/passenger-customizable:$(VERSION) || true
-	docker rmi yabawock/passenger-ruby19:latest yabawock/passenger-ruby19:$(VERSION) || true
 	docker rmi yabawock/passenger-ruby20:latest yabawock/passenger-ruby20:$(VERSION) || true
 	docker rmi yabawock/passenger-ruby21:latest yabawock/passenger-ruby21:$(VERSION) || true
 	docker rmi yabawock/passenger-ruby22:latest yabawock/passenger-ruby22:$(VERSION) || true

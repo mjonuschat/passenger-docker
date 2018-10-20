@@ -123,7 +123,6 @@ Passenger-docker consists of several images, each one tailor made for a specific
 
 **Ruby images**
 
- * `phusion/passenger-ruby19` - Ruby 1.9.
  * `phusion/passenger-ruby20` - Ruby 2.0.
  * `phusion/passenger-ruby21` - Ruby 2.1.
  * `phusion/passenger-ruby22` - Ruby 2.2.
@@ -166,7 +165,6 @@ So put the following in your Dockerfile:
     # a list of version numbers.
     FROM phusion/passenger-full:<VERSION>
     # Or, instead of the 'full' variant, use one of these:
-    #FROM phusion/passenger-ruby19:<VERSION>
     #FROM phusion/passenger-ruby20:<VERSION>
     #FROM phusion/passenger-ruby21:<VERSION>
     #FROM phusion/passenger-ruby22:<VERSION>
@@ -718,11 +716,12 @@ Start a virtual machine with Docker in it. You can use the Vagrantfile that we'v
 
 Build one of the images:
 
-    make build_ruby19
     make build_ruby20
     make build_ruby21
     make build_ruby22
     make build_ruby23
+    make build_ruby24
+    make build_ruby25
     make build_jruby91
     make build_nodejs
     make build_customizable
