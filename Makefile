@@ -137,12 +137,12 @@ clean:
 	rm -rf full_image
 
 clean_images:
-	docker rmi yabawock/passenger-customizable:latest yabawock/passenger-customizable:$(VERSION) || true
-	docker rmi yabawock/passenger-ruby20:latest yabawock/passenger-ruby20:$(VERSION) || true
-	docker rmi yabawock/passenger-ruby21:latest yabawock/passenger-ruby21:$(VERSION) || true
-	docker rmi yabawock/passenger-ruby22:latest yabawock/passenger-ruby22:$(VERSION) || true
-	docker rmi yabawock/passenger-ruby23:latest yabawock/passenger-ruby23:$(VERSION) || true
-	docker rmi yabawock/passenger-ruby24:latest yabawock/passenger-ruby24:$(VERSION) || true
-	docker rmi yabawock/passenger-jruby91:latest yabawock/passenger-jruby91:$(VERSION) || true
-	docker rmi yabawock/passenger-nodejs:latest yabawock/passenger-nodejs:$(VERSION) || true
-	docker rmi yabawock/passenger-full:latest yabawock/passenger-full:$(VERSION) || true
+	docker rmi $(NAME)-customizable:latest $(NAME)-customizable:$(VERSION) || true
+	docker rmi $(NAME)-ruby20:latest $(NAME)-ruby20:$(VERSION) || true
+	docker rmi $(NAME)-ruby21:latest $(NAME)-ruby21:$(VERSION) || true
+	docker rmi $(NAME)-ruby22:latest $(NAME)-ruby22:$(VERSION) || true
+	docker rmi $(NAME)-ruby23:latest $(NAME)-ruby23:$(VERSION) || true
+	docker rmi $(NAME)-ruby24:latest $(NAME)-ruby24:$(VERSION) || true
+	docker rmi $(NAME)-jruby91:latest $(NAME)-jruby91:$(VERSION) || true
+	docker rmi $(NAME)-nodejs:latest $(NAME)-nodejs:$(VERSION) || true
+	docker rmi $(NAME)-full:latest $(NAME)-full:$(VERSION) || true
