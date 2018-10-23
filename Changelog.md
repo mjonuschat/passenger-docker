@@ -1,11 +1,15 @@
-## 2.0.0 (release date: unreleased)
+## 2.0.0 (release date: 2018-10-22)
 
  * Upgraded to baseimage-docker 2.0.0 (Ubuntu 18.04).
  * Upgraded to use RVM to install ruby versions
  * Removed Ruby 1.9.3 support
- * Support for Ruby 2.5
  * Upgraded to Ruby 2.0.0, 2.1.10, 2.2.10 and 2.3.8 and 2.4.5
  * Upgraded to JRuby 9.1.17.0.
+ * Added support for Ruby 2.5
+ * Upgraded to Passenger to 5.3.5 / Nginx 1.14.0
+ * Upgraded Node.js to 8.12.0
+ * Upgraded PostgreSQL to 11.0
+ * Upgraded MySQL to 5.7
 
 ## 1.1.0 (release date: 2017-05-10)
 
